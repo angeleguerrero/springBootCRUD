@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springboot.clienteapp.models.entity.Ciudad;
@@ -33,7 +35,7 @@ public class ClienteController {
 		model.addAttribute("Titulo" , "Listado de Clientes");		
 		model.addAttribute("Clientes", listadoClientes);
 		
-		return "/viewes/clientes/list/listarClientes";
+		return "/viewes/clientes/list/frmListarClientes";
 	}
 	
 //	CREAR CLIENTE
@@ -47,10 +49,19 @@ public class ClienteController {
 		model.addAttribute("Clientes", clientes);
 		model.addAttribute("Ciudades", listaCiudades);
 		
-		return "/viewes/clientes/forms/crearClientes";
+		return "/viewes/clientes/forms/frmCrearClientes";
 	}
 	
 	
+//	GUARDAR CLIENTE 
+	@PostMapping("/salvar")
+	public String salvarDatos(@ModelAttribute Cliente cliente) {
+		
+		clienteService.guardar(cliente);
+		System.out.println("Registro Salvado con Exito");
+		return "redirect:/clientes/listarClientes";
+		
+	}
 	
 	
 }

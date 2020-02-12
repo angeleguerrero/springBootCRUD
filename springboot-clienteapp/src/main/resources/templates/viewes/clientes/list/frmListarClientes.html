@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+
+	<div class="container">
+		<h2 th:text="${Titulo}"></h2>
+	</div>
+
+	<div class="container">
+	<div class="card-body">
+		<a type="button" class="btn btn-primary"
+			th:href="@{/clientes/crearClientes/}" th:text="'Nuevo Cliente'"
+			title="Crear Nuevo Registro"> </a>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Tel�fono</th>
+					<th scope="col">Email</th>
+					<th scope="col">Ciudad</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl:${Clientes}">
+					<th scope="row" th:text="${cl.id}"></th>
+					<td th:text="${cl.nombres}"></td>
+					<td th:text="${cl.apellidos}"></td>
+					<td th:text="${cl.telefono}"></td>
+					<td th:text="${cl.email}"></td>
+					<td th:text="${cl.ciudad.ciudad}"></td>
+
+				</tr>
+
+
+			</tbody>
+		</table>
+
+
+	</div>
+</div>
+</body>
+
+<footer th:replace="plantilla/template :: footer"></footer>
+
+</html>
