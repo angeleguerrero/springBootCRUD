@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="plantilla/template :: head">
 <title>Insert title here</title>
+
 </head>
 <body>
 	<header th:replace="plantilla/template :: header"></header>
@@ -12,14 +13,15 @@
 	</div>
 
 	<div class="container">
-	<div class="card-body">
+	<div class="table-responsive" >
+	
 		<a type="button" class="btn btn-primary"
 			th:href="@{/clientes/crearClientes/}" th:text="'Nuevo Cliente'"
 			title="Crear Nuevo Registro"> </a>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Id</th>
+					<th scope="col" type="hidden" >Id</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Apellido</th>
 					<th scope="col">Tel�fono</th>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -61,6 +62,20 @@ public class ClienteController {
 		System.out.println("Registro Salvado con Exito");
 		return "redirect:/clientes/listarClientes";
 		
+	}
+	
+//	EDITAR CLIENTE
+	@GetMapping("/editarClientes/{id}")
+	public String editarClientes(@PathVariable("id") Long idCliente, Model model) {
+		
+		Cliente clientes = clienteService.buscarPorId(idCliente);
+		List<Ciudad>listaCiudades = ciudadService.ListaCiudades();
+		
+		model.addAttribute("Titulo", "Formulario: Nuevo Cliente");
+		model.addAttribute("Clientes", clientes);
+		model.addAttribute("Ciudades", listaCiudades);
+		
+		return "/viewes/clientes/forms/frmCrearClientes";
 	}
 	
 	

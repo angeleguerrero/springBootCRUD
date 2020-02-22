@@ -14,8 +14,10 @@
 
 				<form  th:action="@{/clientes/salvar}" th:object=${Clientes} method="post"  >
 					<div class="form-group row">
-						<label class="col-md-2" for="nombres">Nombres:</label> <input
-							type="text" th:field="*{nombres}"
+					<input type="hidden" th:field="*{id}">
+					
+					
+						<label class="col-md-2" for="nombres">Nombres:</label> <input type="text" th:field="*{nombres}"
 							class="form-control  form-control- sm col-md-6" id="nombres"
 							placeholder="Nombres de Cliente"> <small></small>
 					</div>
